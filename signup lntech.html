@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document </title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<script>
+    function save_user(){
+        var name = document.getElementById("username").value
+        var pwd = document.getElementById("password").value
+        // alert(name+pwd)
+        fetch(" http://localhost:3000/users", {
+            method: "POST",
+            body: JSON.stringify({"email":name, "password":pwd}),
+            Headers:{
+                "content-type": "application/json"
+            }
+        }).then(resp => resp.json())
+        .then(alert("user added successfully"))
+    }
+</script>
+s
+<body>
+	<div class="login-div">
+        <h2>Welcome to <span>Ecommerce</span></h2>
+        <p>Welcome to our Ecommerce app! We are happy to invite you to explore the 
+        amazing world of online shopping</p>
+		<label for="Username">Username:</label><br>
+        <input type="text" id="username" placeholder="Enter your name"/><br/><br/>
+        <label for="Email">Email:</label> <br>
+        <input type="text" name="" id="Email"  placeholder="Enter your email" example="example00@gmail.com"> <br><br>
+        <label for="Password">Password:</label><br>
+        <input type="password" id="password" placeholder="Enter your password"/><br/><br/>
+		<input type="submit" class="signup-btn" value="Sign Up" onclick="save_user()" /><br/><br/>
+		<div class="link">
+            <p>alerady registered<a href="loginLN.html"> log in</a></p>
+        </div>
+	</div>
+    
+</body>
+</html>
